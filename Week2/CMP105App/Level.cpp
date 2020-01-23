@@ -9,7 +9,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 
 	font.loadFromFile("font/arial.ttf");
 	text.setFont(font);
-	text.setString("Mouse position: ");
+	text.setString("Mouse position: " + std::to_string(input->getMouseX()) + " " + std::to_string(input->getMouseY()));
+
 	text.setCharacterSize(24);
 	text.setFillColor(sf::Color::White);
 }
@@ -39,7 +40,7 @@ void Level::handleInput()
 	{
 		window->close();
 	}
-
+	text.setString("Mouse position: " + std::to_string(input->getMouseX()) + " " + std::to_string(input->getMouseY()));
 	//std::cout << input ->getMouseX();
 
 	
