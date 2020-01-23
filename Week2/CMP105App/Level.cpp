@@ -7,6 +7,11 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 
 	// initialise game objects
 
+	font.loadFromFile("font/arial.ttf");
+	text.setFont(font);
+	text.setString("Mouse position: ");
+	text.setCharacterSize(24);
+	text.setFillColor(sf::Color::White);
 }
 
 Level::~Level()
@@ -50,8 +55,9 @@ void Level::update()
 void Level::render()
 {
 	beginDraw();
-
+	window->draw(text);
 	endDraw();
+
 }
 
 // Begins rendering to the back buffer. Background colour set to light blue.
