@@ -19,6 +19,7 @@ private:
 	// Default functions for rendering to the screen.
 	void beginDraw();
 	void endDraw();
+	sf::RenderWindow* window;
 
 	// Default variables for level class.
 	sf::RenderWindow* window;
