@@ -8,6 +8,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 
 	// initialise game objects
 
+	
+
 	font.loadFromFile("font/arial.ttf");
 	text.setFont(font);
 	text.setString("Mouse position: " + std::to_string(input->getMouseX()) + " " + std::to_string(input->getMouseY()));
@@ -43,7 +45,7 @@ void Level::handleInput()
 	}
 	text.setString("Mouse position: " + std::to_string(input->getMouseX()) + " " + std::to_string(input->getMouseY()));
 	
-	//Reads mouse input
+	
 	if (input ->isMouseLDown())
 	{
 		if (mouseIsPressed == false)
@@ -63,6 +65,22 @@ void Level::handleInput()
 		std::cout << "Mouse distance traveled in X axis: " << mousePressedX << "  Y axis: " << mousePressedY << std::endl;
 	}
 
+	if (input -> isMouseRDown())
+	{
+		if (!circleDrawn)
+		{
+			circleDrawn = true;
+			circle.setRadius(30);
+			circle.setFillColor(sf::Color::White);
+			circle.setPosition(input->getMouseX() - circle.getRadius(), input->getMouseY() - circle.getRadius());
+			
+		}
+	}
+	if (!input->isMouseRDown() && circleDrawn)
+	{
+		circleDrawn = false;
+	}
+
 	
 }
 
@@ -77,6 +95,7 @@ void Level::render()
 {
 	beginDraw();
 	window->draw(text);
+	window->draw(circle);
 	endDraw();
 
 }

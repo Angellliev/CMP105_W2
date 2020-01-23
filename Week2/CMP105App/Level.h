@@ -33,5 +33,6 @@ private:
 	int mouseDistanceDragged;
 
 	// Add your object here
-
+	sf::CircleShape circle;
+	bool circleDrawn = false;
 };
