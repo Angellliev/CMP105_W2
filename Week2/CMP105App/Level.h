@@ -26,6 +26,12 @@ private:
 	sf::Text text;
 	Input* input;
 
+	//Mouse controlls
+	bool mouseIsPressed = false;
+	int mousePressedX;
+	int mousePressedY;
+	int mouseDistanceDragged;
+
 	// Add your object here
 
 };

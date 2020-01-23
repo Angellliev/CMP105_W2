@@ -1,4 +1,5 @@
 #include "Level.h"
+#include <cmath>
 
 Level::Level(sf::RenderWindow* hwnd, Input* in)
 {
@@ -41,7 +42,26 @@ void Level::handleInput()
 		window->close();
 	}
 	text.setString("Mouse position: " + std::to_string(input->getMouseX()) + " " + std::to_string(input->getMouseY()));
-	//std::cout << input ->getMouseX();
+	
+	//Reads mouse input
+	if (input ->isMouseLDown())
+	{
+		if (mouseIsPressed == false)
+		{
+			mousePressedX = input->getMouseX();
+			mousePressedY = input->getMouseY();
+		}
+		mouseIsPressed = true;
+		
+	}
+	if (!input->isMouseLDown() && mouseIsPressed)
+	{
+		mouseIsPressed = false;
+		mousePressedX = input->getMouseX() - mousePressedX;
+		mousePressedY = input->getMouseY() - mousePressedY;
+		
+		std::cout << "Mouse distance traveled in X axis: " << mousePressedX << "  Y axis: " << mousePressedY << std::endl;
+	}
 
 	
 }
